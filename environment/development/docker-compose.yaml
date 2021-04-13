@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  hdd-socomec-db:
+    container_name: hdd-socomec-db
+    build:
+      context: ./postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PG_HDD_SOCOMEC_USER=hdd
+      - PG_HDD_SOCOMEC_PASSWORD=hdd
+    ports:
+      - "5436:5432"
+    volumes:
+      - hdd-socomec-pgdata:/var/lib/postgresql/data
+
+volumes:
+  hdd-socomec-pgdata:

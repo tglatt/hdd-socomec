@@ -1,0 +1,21 @@
+{
+  "name": "hdd-socomec",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Thomas Glatt",
+  "license": "MIT",
+  "scripts": {
+    "start": "node --unhandled-rejections=strict src/index.js",
+    "db:start": "docker-compose -f ./environment/development/docker-compose.yaml up --build",
+    "db:migrate": "yarn run knex migrate:latest",
+    "db:seed": "yarn run knex seed:run"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "knex": "^0.95.4",
+    "node-fetch": "^2.6.1",
+    "objection": "^2.2.15",
+    "pg": "^8.5.1",
+    "pino": "^6.11.2"
+  }
+}
