@@ -3,14 +3,14 @@ const knexConnection = require("./knex");
 
 Model.knex(knexConnection);
 
-class Capteur extends Model {
+class Measure extends Model {
   static get tableName() {
-    return "capteur";
+    return "measure";
   }
 }
 
-const CapteurQuery = {
-  all: () => Capteur.query(),
+const MeasureQuery = {
+  all: () => Measure.query(),
 };
 
-module.exports = { CapteurQuery };
+module.exports = { MeasureQuery };
