@@ -9,8 +9,4 @@ class Measure extends Model {
   }
 }
 
-const MeasureQuery = {
-  all: () => Measure.query(),
-};
-
-module.exports = { MeasureQuery };
+module.exports = { Measure };
