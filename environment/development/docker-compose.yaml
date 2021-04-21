@@ -20,5 +20,25 @@ services:
     volumes:
       - hdd-socomec-pgdata:/var/lib/postgresql/data
 
+  hdd-socomec-metabase:
+    image: metabase/metabase
+    restart: always
+    ports:
+      - 3001:3000
+    volumes:
+      - hdd-socomec-metabase:/metabase-data
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: postgres
+      MB_DB_PASS: postgres
+      MB_DB_HOST: hdd-socomec-db
+    depends_on:
+      - hdd-socomec-db
+    links:
+      - hdd-socomec-db
+
 volumes:
   hdd-socomec-pgdata:
+  hdd-socomec-metabase:
