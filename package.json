@@ -11,6 +11,7 @@
     "db:seed": "yarn run knex seed:run"
   },
   "dependencies": {
+    "date-fns": "^2.21.1",
     "dotenv": "^8.2.0",
     "knex": "^0.95.4",
     "node-fetch": "^2.6.1",

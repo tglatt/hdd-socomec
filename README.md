@@ -26,6 +26,12 @@ initialiser la base de données
 yarn db:migrate
 ```
 
+insérer les données sur les capteurs
+
+```sh
+yarn db:seed
+```
+
 lancer l'application
 
 ```sh

@@ -1,19 +1,22 @@
 exports.up = function (knex) {
   return Promise.all([
     knex.schema.createTable("measure", (table) => {
-      table.increments("id").primary();
-      table.datetime("created_at", { useTz: false }).defaultTo(knex.fn.now());
-
       table.string("device_name").notNullable();
-      table.datetime("measured_at", { useTz: false });
+      table.datetime("measured_at", { useTz: false }).notNullable();
 
-      table.string("load_name1").notNullable();
-      table.string("usage1").notNullable();
-      table.string("nature1").notNullable();
-      table.string("measured_value1").notNullable();
-      table.string("unit1").notNullable();
-      table.float("scale1").notNullable();
-      table.float("value1").notNullable();
+      table.primary(["device_name", "measured_at"]);
+      table.foreign("device_name").references("device.device_name");
+
+      table.string("state").notNullable().defaultTo("missing");
+      table.boolean("expected").notNullable().defaultTo(true);
+
+      table.string("load_name1");
+      table.string("usage1");
+      table.string("nature1");
+      table.string("measured_value1");
+      table.string("unit1");
+      table.float("scale1");
+      table.float("value1");
 
       table.string("load_name2");
       table.string("usage2");

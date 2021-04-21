@@ -1,4 +1,4 @@
-const { Measure } = require("../models");
+const { MEASURE_STATES } = require("../models");
 const { DEVICE_NAME, METADATA_KEY } = require("./constant");
 
 const { LOAD_NAME, USAGE, NATURE, MEASURED_VALUE, UNIT, SCALE } = METADATA_KEY;
@@ -13,6 +13,7 @@ const parseMeasure = async (row, metadatas) => {
   const measure = {
     device_name: metadatas[DEVICE_NAME],
     measured_at: measureDateAsString,
+    state: MEASURE_STATES.PRESENT,
   };
 
   for (let i = 0; i < measureMetadatas.length; i++) {

@@ -7,6 +7,15 @@ class Measure extends Model {
   static get tableName() {
     return "measure";
   }
+
+  static get idColumn() {
+    return ["device_name", "measured_at"];
+  }
 }
 
-module.exports = { Measure };
+const MEASURE_STATES = {
+  MISSING: "missing",
+  PRESENT: "present",
+};
+
+module.exports = { Measure, MEASURE_STATES };
